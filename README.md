@@ -14,6 +14,4 @@ from health-care data with ontological information for automated knowledge gener
 in The 17th UK Workshop on Computational Intelligence, UKCI-2017, University of
 Cardiff, UK.
 
-> McGarry, K. [2013], Discovery of functional protein groups by clustering commu-
-nity links and integration of ontological knowledge, Expert Systems with Applications
-40(13), 5101-5112.
+> McGarry, K. [2013], Discovery of functional protein groups by clustering community links and integration of ontological knowledge, Expert Systems with Applications,40(13), 5101-5112.
