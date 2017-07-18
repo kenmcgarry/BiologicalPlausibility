@@ -26,3 +26,9 @@ Clinical Epidemiology 62(3), 270-277.
 > Stegmayer, G., Milone, D., Kamenetzky, L., Lopez, M. and Carrari, F. [2012], A biologically
 inspired validity measure for comparison of clustering methods over metabolic data sets,
 IEEE/ACM transactions on computational biology and bioinformatics 9(3), 706-716.
+
+> Schriml, L., Arze, C., Nadendla, S., Chang, Y.-W., Mazaitis, M., Felix, V., Feng, G. and
+Kibbe, W. [2012], Disease ontology: a backbone for disease semantic integration', Nucleic
+Acids Research 40, D940-D946.
+
+
