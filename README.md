@@ -5,6 +5,8 @@ The past 20 years as seen the rapid development and application of numerous comp
 
 In our work we incorporate information theoretic approaches for the assessment and biological validity of modules discovered by the clustering process. The use of ontologies (within reason) play a major role in this assessment process. The intention, is not only to provide the best solution but to provide an explanation of why one answer should be preferred over the others. This is the approach favored by clinicians and biomedical scientists to understand the impact and significance of any bioinformatic discovery.
 
+## References
+
 > Zuo, Y., Cui, Y., Li, R. and Ressom, H. [2017], Incorporating prior biological knowledge
 for network-based diferential gene expression analysis using diferentially weighted graphical
 LASSO, BMC Bioinformatics 18(99).
