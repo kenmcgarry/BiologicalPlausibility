@@ -12,7 +12,7 @@ In our work we incorporate information theoretic approaches for the assessment a
 for network-based diferential gene expression analysis using diferentially weighted graphical
 LASSO, BMC Bioinformatics 18(99).
 
-> Bradford-Hill, A. [1965], The environment and disease: Association or causation?,
+> Bradford-Hill, A. [1965], The environment and disease: association or causation?,
 Proceedings of the Royal Society of Medicine. 58(5).
 
 > Heritage, J., McDonald, S. and McGarry, K. [2017], Integrating association rules mined
