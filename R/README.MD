@@ -4,7 +4,7 @@ The files here are (as usual) in a state of flux. Expect changes almost daily to
 
 When all files are completed they should:
 
-1. `infotheory.R`, implements most of the mutual information caluclations using the infotheory package by 
+1. `infotheory.R`, implements most of the mutual information caluclations using the infotheory package by Meyer.
 
 2. `BradfordHill.R`, implements some/maybe all of the nine Bradford-Hill criteria for biological plausibility
 
