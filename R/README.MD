@@ -4,7 +4,7 @@ The files here are (as usual) in a state of flux. Expect changes almost daily to
 
 When all files are completed they should:
 
-`main.R`, The starting point of our journey, first file to be called up and loads in libraries, data and any functions.
+`mainfile.R`, The starting point of our journey, first file to be called up and loads in libraries, data and any functions.
 
 `community.R`, builds protein complex networks from STITCH/STRING data, extracts modules (communities) from the complex networks. 
 
