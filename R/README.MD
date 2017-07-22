@@ -8,7 +8,7 @@ When all files are completed they should:
 
 `community.R`, builds protein complex networks from STITCH/STRING data, extracts modules (communities) from the complex networks. 
 
-`infotheory.R`, implements most of the mutual information caluclations using the [infotheory](https://cran.r-project.org/web/packages/infotheo/index.html "CRAN Repository") package by Meyer.
+`infotheory.R`, implements most of the mutual information calculations using the [infotheory](https://cran.r-project.org/web/packages/infotheo/index.html "CRAN Repository") package by Meyer.
 
 `BradfordHill.R`, implements some/maybe all of the nine [Bradford-Hill](https://en.wikipedia.org/wiki/Bradford_Hill_criteria "Yes, I know Wikipedia!") criteria for biological plausibility.
 
