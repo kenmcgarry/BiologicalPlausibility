@@ -23,6 +23,9 @@ library(GeneCycle)
 library(qvalue)
 library(GeneNet)
 
+setwd("C:/R-files/informationtheory")    # point to where my code lives
+source("somefunctions.R") 
+
 # Lu et al. (2004) brain aging gene expression data: see lu2004 data.
 #data("lu2004")
 #dim(lu2004$x)
@@ -39,10 +42,35 @@ load("C:\\R-files\\dataCANCER\\hedenfalk.rda")
 # Whitfield et al. (2002) human HeLa cell-cycle data: humanhela.rda.gz.
 load("C:\\R-files\\dataCANCER\\humanhela.rda")
 
-# Smith et al. (2004) A. thaliana time series data:
-#  the  temporal  expression  of  800  genes  of A.thaliana during  the  diurnal cycle.  
-data("arth800")  # from GeneNet package
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC523333/
+# Smith et al. (2004) A. thaliana time series expression of  800 genes during diurnal cycle.  
+data("arth800")  # derived from GeneNet package
 summary(arth800.expr)
+
+#-------------------------------------------------------------------------------------------
+# build network on A.thaliana data
+library("graph")  # creates graphNEL objects
+library("Rgraphviz")
+
+# Compute Partial Correlations and Select Relevant Edges
+pcor.dyn = ggm.estimate.pcor(arth800.expr, method = "dynamic")
+arth.edges = network.test.edges(pcor.dyn,direct=TRUE)
+#dim(arth.edges)
+
+# We use the strongest 250 edges:
+arth.net <- extract.network(arth.edges, method.ggm="number", cutoff.ggm=250)
+node.labels <- as.character(1:ncol(arth800.expr))
+gr <- network.make.graph(arth.net, node.labels, drop.singles=TRUE) 
+plot_thali(gr)
+
+gr2 <- igraph.from.graphNEL(gr) # convert from graphNEL to igraph object
+el_thali <- get.edgelist(gr2, names=TRUE) # get edgelist
+c1 <- getLinkCommunities(el_thali, hcmethod = "single")  # edgelist required for linkcomm
+
+
+
+
+
 
 
 
