@@ -4,7 +4,7 @@
 # Ken McGarry, July 2017
 
 library(infotheo)
-#library(entropy)      # discretize() is over written by entropy packages
+#library(entropy)      # discretize() is over written by entropy package - note warning.
 #library(Information)  # weight of evidence (WOE) and information value (IV)
 
 library(dplyr)
@@ -16,6 +16,7 @@ library(clusterProfiler)
 library(ClustOfVar)
 library(ReactomePA)
 library(igraph)
+library(minet)
 library(linkcomm) 
 
 
@@ -44,15 +45,14 @@ ii <- interinformation(dat, method = "sg")
 
 
 
-## EXAMPLE FROM VIGNETTE ##-------------------------
+## linkcomm EXAMPLE from vignette ##-------------------------
+library(linkcomm)
+
 g <- swiss[,3:4]
 lc <- getLinkCommunities(g)
 
 ## Plot a graph layout of the link communities.
 plot(lc, type = "graph")
-
-## Use a Spencer circle layout.
-plot(lc, type = "graph", layout = "spencer.circle")
 
 ## Calculate a community-based measure of node centrality.
 getCommunityCentrality(lc)
@@ -63,6 +63,15 @@ getAllNestedComm(lc)
 ## Uncover the relatedness between communities.
 getClusterRelatedness(lc)
 
+plotLinkCommMembers(lc)
+
+# Calculate mutual information from link communities
+commun <- lc$pdens
+nbins<- sqrt(NROW(commun))
+dat <- infotheo::discretize(commun,"equalwidth", nbins) # use full package extension
+IXY <- mutinformation(dat,method= "emp")
+IXY2 <- mutinformation(dat[,1],dat[,2])
+H <- entropy(infotheo::discretize(commun),method="shrink")
 
 
 
