@@ -14,4 +14,4 @@ When all files are completed they should:
 
 `plotfigures.R`, implements the plots/diagrams in the paper and also some eye candy diagrams for main system figure.
 
-
+`somefunctions.R` contains several functions required to do the repetitive work.
