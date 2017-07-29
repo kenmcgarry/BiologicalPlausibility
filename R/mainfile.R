@@ -44,32 +44,34 @@ load("C:\\R-files\\dataCANCER\\humanhela.rda")
 
 # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC523333/
 # Smith et al. (2004) A. thaliana time series expression of  800 genes during diurnal cycle.  
-data("arth800")  # derived from GeneNet package
-summary(arth800.expr)
+#data("arth800")  # derived from GeneNet package
+#summary(arth800.expr)
 
 #-------------------------------------------------------------------------------------------
-# build network on A.thaliana data
+# build network on West data
 library("graph")  # creates graphNEL objects
 library("Rgraphviz")
 
 # Compute Partial Correlations and Select Relevant Edges
-pcor.dyn = ggm.estimate.pcor(arth800.expr, method = "dynamic")
-arth.edges = network.test.edges(pcor.dyn,direct=TRUE)
+pcor.dyn <- ggm.estimate.pcor(west.mat.clean, method = "dynamic")
+west.edges <- network.test.edges(pcor.dyn,direct=TRUE)
 #dim(arth.edges)
 
 # We use the strongest 250 edges:
-arth.net <- extract.network(arth.edges, method.ggm="number", cutoff.ggm=250)
-node.labels <- as.character(1:ncol(arth800.expr))
-gr <- network.make.graph(arth.net, node.labels, drop.singles=TRUE) 
-plot_thali(gr)
+west.net <- extract.network(west.edges, method.ggm="number", cutoff.ggm=250)
+node.labels <- as.character(1:length(symbol.name.clean)) # use numbers rather than plot gene lengthy names 
+gr <- network.make.graph(west.net, node.labels, drop.singles=TRUE) 
+plot_west(gr)
 
 gr2 <- igraph.from.graphNEL(gr) # convert from graphNEL to igraph object
-el_thali <- get.edgelist(gr2, names=TRUE) # get edgelist
-c1 <- getLinkCommunities(el_thali, hcmethod = "single")  # edgelist required for linkcomm
+el_west <- get.edgelist(gr2, names=TRUE) # get edgelist
+c1 <- getLinkCommunities(el_west, hcmethod = "single")  # edgelist required for linkcomm
+plot(c1, type = "graph", layout = "spencer.circle")
 
 
-
-
+#-------------------------------------------------------------------------------------------
+# build network on Hedenfalk data
+load("C:\\R-files\\dataCANCER\\hedenfalk.rda")
 
 
 
