@@ -34,4 +34,4 @@ IEEE/ACM transactions on computational biology and bioinformatics 9(3), 706-716.
 Kibbe, W. [2012], Disease ontology: a backbone for disease semantic integration', Nucleic
 Acids Research 40, D940-D946.
 
-## Project last updated July 27th 2017
+## Project last updated July 30th 2017
