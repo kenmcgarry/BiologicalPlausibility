@@ -19,7 +19,7 @@ library(linkcomm)
 
 # load in gene data via the packages
 library(care)
-library(GeneCycle)
+#library(GeneCycle)
 library(qvalue)
 library(GeneNet)
 
@@ -65,8 +65,14 @@ plot_west(gr)
 
 gr2 <- igraph.from.graphNEL(gr) # convert from graphNEL to igraph object
 el_west <- get.edgelist(gr2, names=TRUE) # get edgelist
-c1 <- getLinkCommunities(el_west, hcmethod = "single")  # edgelist required for linkcomm
-plot(c1, type = "graph", layout = "spencer.circle")
+west_single <- getLinkCommunities(el_west, hcmethod = "single")  # edgelist required for linkcomm
+west_comp <- getLinkCommunities(el_west, hcmethod = "complete")  # edgelist required for linkcomm
+west_ave <- getLinkCommunities(el_west, hcmethod = "average")  # edgelist required for linkcomm
+west_ward <- getLinkCommunities(el_west, hcmethod = "ward.D2")  # edgelist required for linkcomm
+west_cent <- getLinkCommunities(el_west, hcmethod = "centroid")  # edgelist required for linkcomm
+
+plot(west_ward, type = "graph", layout = "spencer.circle")
+
 
 
 #-------------------------------------------------------------------------------------------
