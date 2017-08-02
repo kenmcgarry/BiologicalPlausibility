@@ -73,6 +73,14 @@ west_cent <- getLinkCommunities(el_west, hcmethod = "centroid")  # edgelist requ
 
 plot(west_ward, type = "graph", layout = "spencer.circle")
 
+# Calculate mutual information from link communities
+commun <- west_single$pdens
+nbins<- sqrt(NROW(commun))
+dat <- infotheo::discretize(commun,"equalwidth", nbins) # use full package extension
+IXY <- mutinformation(dat,method= "emp")
+IXY2 <- mutinformation(dat[,1],dat[,2])
+H <- entropy(infotheo::discretize(commun),method="shrink")
+ 
 
 
 #-------------------------------------------------------------------------------------------
@@ -80,8 +88,24 @@ plot(west_ward, type = "graph", layout = "spencer.circle")
 load("C:\\R-files\\dataCANCER\\hedenfalk.rda")
 
 
-
-
+library(BoolNet)
+data(cellcycle)
+plotNetworkWiring(cellcycle)
+# get attractors
+attractors <- getAttractors(cellcycle)
+# calculate number of different attractor lengths,
+# and plot attractors side by side in "table" mode
+par(mfrow=c(1, length(table(sapply(attractors$attractors, 
+                                    function(attractor){length(attractor$involvedStates)})))))
+plotAttractors(attractors)
+# plot attractors in "graph" mode
+par(mfrow=c(1, length(attractors$attractors)))
+plotAttractors(attractors, mode="graph")
+# identify asynchronous attractors
+attractors <- getAttractors(cellcycle, type="asynchronous")
+# plot attractors in "graph" mode
+par(mfrow=c(1, length(attractors$attractors)))
+plotAttractors(attractors, mode="graph")
 
 
 
