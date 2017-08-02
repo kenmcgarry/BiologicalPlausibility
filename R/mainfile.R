@@ -77,11 +77,15 @@ plot(west_ward, type = "graph", layout = "spencer.circle")
 commun <- west_single$pdens
 nbins<- sqrt(NROW(commun))
 dat <- infotheo::discretize(commun,"equalwidth", nbins) # use full package extension
-IXY <- mutinformation(dat,method= "emp")
-IXY2 <- mutinformation(dat[,1],dat[,2])
+MI <- mutinformation(dat,method= "emp")
+MI2 <- mutinformation(dat[,1],dat[,2])
 H <- entropy(infotheo::discretize(commun),method="shrink")
- 
 
+# ------ example of GCC ----------
+x1 <- c(1, 0, 1, 1, 1, 1, 0)
+y1 <- c(0, 1, 1, 1, 1, 1, 0)
+MI <- mutinformation(x1,y1) 
+GCC <- (1 - exp(-2*MI))^(1/2)  # global correlation coeff
 
 #-------------------------------------------------------------------------------------------
 # build network on Hedenfalk data
