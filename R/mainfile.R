@@ -49,6 +49,9 @@ load("C:\\R-files\\dataCANCER\\humanhela.rda")
 
 #-------------------------------------------------------------------------------------------
 # build network on West data
+# http://www.pnas.org/content/98/20/11462.abstract
+# West et al. (2001) breast cancer data: westdataclean.rda.gz.
+load("C:\\R-files\\dataCANCER\\westdataclean.rda")
 library("graph")  # creates graphNEL objects
 library("Rgraphviz")
 
@@ -86,6 +89,25 @@ x1 <- c(1, 0, 1, 1, 1, 1, 0)
 y1 <- c(0, 1, 1, 1, 1, 1, 0)
 MI <- mutinformation(x1,y1) 
 GCC <- (1 - exp(-2*MI))^(1/2)  # global correlation coeff
+
+# to calculate the MI. You actually need a separate contingency table for each attribute. 
+# For example, this is the table for A1 (from the figure):
+# https://www.biostars.org/p/13815/
+# McGarry's method of verifying clusters by checking their mutual information against GO terms. 
+# A cluster/annotation contingency matrix is produced, indicating that for cluster r and GO term c, 
+# each element indicates the number of occurrences of a specific GO term (the column) for the genes 
+# in that group. Then, mutual information is calculated.
+# The reason that each attribute is considered separately is that a single gene can have multiple 
+# attributes (or none), however, this is not all at clear from the figure which implies that each 
+# gene has exactly one attribute. Furthermore, the contingency table in this figure is NOT the one 
+# you need to calculate the MI. You actually need a separate contingency table for each attribute. 
+# For example, this is the table for A1 (from the figure):
+#
+#   cluster   |  A1 = yes  |  A1 = no
+#   ---------------------------------
+#   C = 1     |    5       |     1
+#   C = 2     |    0       |     7
+#   C = 3     |    1       |     6
 
 #-------------------------------------------------------------------------------------------
 # build network on Hedenfalk data

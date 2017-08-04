@@ -12,7 +12,7 @@
 # 8. Experimental evidence,if the disease rates go down after the causal agent has been eliminated, it is support for a causal association.
 # 9. Analogy, if a similar agent exerts similar effects, it is more likely that the association is causal.
 
- 
+# output from analysis: 
 # a) Non-causality  b) Weak causality  c) Strong causality
 
 # From http://google.github.io/CausalImpact/CausalImpact.html
@@ -28,8 +28,8 @@ matplot(data, type = "l")
 # To estimate a causal effect, we begin by specifying which period in the data should be 
 # used for training the model (pre-intervention period) and which period for computing a 
 # counterfactual prediction (post-intervention period).
-pre.period <- c(1, 70)
-post.period <- c(71, 100)
+pre.period <- c(1, 65)
+post.period <- c(66, 100)
 
 # assemble a structural time-series model, perform posterior inference, and compute estimates 
 # of the causal effect. The return value is a CausalImpact object.
@@ -56,6 +56,6 @@ post.period <- as.Date(c("2014-03-12", "2014-04-10"))
 impact <- CausalImpact(data, pre.period, post.period)
 plot(impact)
 
-
+summary(impact, "report")
 
 
