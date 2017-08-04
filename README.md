@@ -51,4 +51,4 @@ and Smith, A. [2009], Diurnal changes in the transcriptom encoding enzymes of st
 provide evidence for both transcriptional and posttranscriptional regulation of starch metabolism in
 arabidopsis leaves., Plant Physiol. 136, 2687-2699.
 
-## Project last updated July 30th 2017
+## Project last updated August 4th 2017
