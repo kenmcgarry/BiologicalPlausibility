@@ -103,13 +103,16 @@ plot(west_single, type = "graph",layout = "spencer.circle")
 plot(west_comp, type = "graph", layout = "spencer.circle")
 plot(west_comp, type = "graph",layout = "spencer.circle")
 
+# -----------------------------------------
 # Use GO and KEGG for enrichment
 test <- gene_GO_terms[c("LRBA", "LYST", "NBEA", "NBEAL1", "NBEAL2", "NSMAF", "WDFY3", "WDFY4", "WDR81")]
 
+# some sort of for loop to get all GO terms for each gene in a cluster (community)
+GO_cluster <- gene_GO_terms[getNodesIn(west_single, clusterids = 1)]
+go$name[GO_cluster$FGF7]
 
-getNodesIn(west_single, clusterids = 1)
-west_single
 
+# just some pretty printing of various graphs -------
 ef <- graph.feature(west_single, type = "edges", indices = getEdgesIn(west_single, clusterids = 14),features = 5, default = 1)
 plot(west_single, type="graph", ewidth = ef)
 
