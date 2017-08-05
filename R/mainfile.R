@@ -52,8 +52,21 @@ load("C:\\R-files\\dataCANCER\\humanhela.rda")
 # http://www.pnas.org/content/98/20/11462.abstract
 # West et al. (2001) breast cancer data: westdataclean.rda.gz.
 load("C:\\R-files\\dataCANCER\\westdataclean.rda")
+setwd("C:/R-files/informationtheory")    # point to where my code lives
+source("somefunctions.R") 
+
+library(linkcomm) 
+library(infotheo)
+library(GeneNet)
 library("graph")  # creates graphNEL objects
 library("Rgraphviz")
+
+# remove entries without a gene name, that is the colnames, there are 70 such entries.
+west.mat.clean <- west.mat.clean[complete.cases(west.mat.clean * 0), , drop=FALSE]
+delete.idx <-(colnames(west.mat.clean) =="NA")
+delete.idx <- which(is.na(x))
+west.mat.clean <- subset(west.mat.clean,select= -delete.idx)
+symbol.name.clean <- symbol.name.clean[-delete.idx]
 
 # Compute Partial Correlations and Select Relevant Edges
 pcor.dyn <- ggm.estimate.pcor(west.mat.clean, method = "dynamic")
@@ -61,7 +74,7 @@ west.edges <- network.test.edges(pcor.dyn,direct=TRUE)
 #dim(arth.edges)
 
 # We use the strongest 250 edges:
-west.net <- extract.network(west.edges, method.ggm="number", cutoff.ggm=250)
+west.net <- extract.network(west.edges, method.ggm="number", cutoff.ggm=350)
 node.labels <- as.character(1:length(symbol.name.clean)) # use numbers rather than plot gene lengthy names 
 gr <- network.make.graph(west.net, node.labels, drop.singles=TRUE) 
 plot_west(gr)
@@ -74,7 +87,15 @@ west_ave <- getLinkCommunities(el_west, hcmethod = "average")  # edgelist requir
 west_ward <- getLinkCommunities(el_west, hcmethod = "ward.D2")  # edgelist required for linkcomm
 west_cent <- getLinkCommunities(el_west, hcmethod = "centroid")  # edgelist required for linkcomm
 
-plot(west_ward, type = "graph", layout = "spencer.circle")
+plot(west_single, type = "graph", layout = "spencer.circle")
+
+# Use GO and KEGG for enrichment
+# need to restore gene names rather than arbitary numbers
+gene_names <- symbol.name.clean[V(gr2)]
+V(gr2)$label <- gene_names
+
+
+
 
 # Calculate mutual information from link communities
 commun <- west_single$pdens
