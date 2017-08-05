@@ -5,8 +5,9 @@ The past 20 years as seen the rapid development and application of numerous comp
 
 We use three datasets of microarray expression data to demonstrate our methods. The Arapadosis Thaliana (a plant) experiments by Smith concern the  measurement of 800 genes from 22 samples during diurnal cycle extracted from the leaves and examines the synthesis and functions of enzymes of starch metabolism [Smith2004]. We also use two breast cancer data sets by West and Hedenfalk [West2001,Hedenfalk2001]. The Hedenfalk data examines the different groups of genes (3,226 genes ) expressed by breast cancers with BRCA1 mutations and breast cancers with BRCA2 mutations from 16 samples. The West data explores the hypothesis that breast tumors can be discriminated on the basis of estrogen receptor status and also on the categorized lymph node status, using Affymetrix arrays with 3,883 genes from 49 samples.
 
-In our work we incorporate information theoretic approaches for the assessment and biological validity of modules discovered by the clustering process. The use of ontologies (within reason) play a major role in this assessment process. The intention, is not only to provide the best solution but to provide an explanation of why one answer should be preferred over the others. This is the approach favored by clinicians and biomedical scientists to understand the impact and significance of any bioinformatic discovery.
+In this work we present  a new method called Biologically Plausible Clustering (BPC) for computing a global relevance measure for clustering genes and determining their biological meaning.
 
+In our work we incorporate information theoretic approaches for the assessment and biological validity of modules discovered by the clustering process. The use of ontologies (within reason) play a major role in this assessment process. The intention, is not only to provide the best solution but to provide an explanation of why one answer should be preferred over the others. This is the approach favored by clinicians and biomedical scientists to understand the impact and significance of any bioinformatic discovery. 
 
 ## References
 
