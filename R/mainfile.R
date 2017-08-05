@@ -60,24 +60,35 @@ library(infotheo)
 library(GeneNet)
 library("graph")  # creates graphNEL objects
 library("Rgraphviz")
+library(ontologyIndex)
+data(go)
+library(ontologySimilarity)
+data(gene_GO_terms)
+data(GO_IC)
 
 # remove entries without a gene name, that is the colnames, there are 70 such entries.
-west.mat.clean <- west.mat.clean[complete.cases(west.mat.clean * 0), , drop=FALSE]
+#west.mat.clean <- west.mat.clean[complete.cases(west.mat.clean * 0), , drop=FALSE]
 delete.idx <-(colnames(west.mat.clean) =="NA")
-delete.idx <- which(is.na(x))
+delete.idx <- which(is.na(delete.idx))
 west.mat.clean <- subset(west.mat.clean,select= -delete.idx)
 symbol.name.clean <- symbol.name.clean[-delete.idx]
+
+# remove duplicated column names i.e. genes approx 500 !
+west.mat.clean <- west.mat.clean[, !duplicated(colnames(west.mat.clean))]
+symbol.name.clean <- unique(symbol.name.clean)
 
 # Compute Partial Correlations and Select Relevant Edges
 pcor.dyn <- ggm.estimate.pcor(west.mat.clean, method = "dynamic")
 west.edges <- network.test.edges(pcor.dyn,direct=TRUE)
-#dim(arth.edges)
+#dim(west.edges)
 
-# We use the strongest 250 edges:
+# We use the strongest 350 edges:
 west.net <- extract.network(west.edges, method.ggm="number", cutoff.ggm=350)
-node.labels <- as.character(1:length(symbol.name.clean)) # use numbers rather than plot gene lengthy names 
-gr <- network.make.graph(west.net, node.labels, drop.singles=TRUE) 
+node.labels <- symbol.name.clean # 
+#node.labels<- as.character(1:length(symbol.name.clean)) # use numbers rather than plot gene lengthy names 
+gr <- network.make.graph(west.net,node.labels,drop.singles=TRUE) 
 plot_west(gr)
+
 
 gr2 <- igraph.from.graphNEL(gr) # convert from graphNEL to igraph object
 el_west <- get.edgelist(gr2, names=TRUE) # get edgelist
@@ -88,14 +99,31 @@ west_ward <- getLinkCommunities(el_west, hcmethod = "ward.D2")  # edgelist requi
 west_cent <- getLinkCommunities(el_west, hcmethod = "centroid")  # edgelist required for linkcomm
 
 plot(west_single, type = "graph", layout = "spencer.circle")
+plot(west_single, type = "graph",layout = "spencer.circle")
+plot(west_comp, type = "graph", layout = "spencer.circle")
+plot(west_comp, type = "graph",layout = "spencer.circle")
 
 # Use GO and KEGG for enrichment
-# need to restore gene names rather than arbitary numbers
-gene_names <- symbol.name.clean[V(gr2)]
-V(gr2)$label <- gene_names
+test <- gene_GO_terms[c("LRBA", "LYST", "NBEA", "NBEAL1", "NBEAL2", "NSMAF", "WDFY3", "WDFY4", "WDR81")]
 
 
+getNodesIn(west_single, clusterids = 1)
+west_single
 
+ef <- graph.feature(west_single, type = "edges", indices = getEdgesIn(west_single, clusterids = 14),features = 5, default = 1)
+plot(west_single, type="graph", ewidth = ef)
+
+graph.feature(west_single, indices = getNodesIn(west_single, type = "indices"), features = 20, default = 5)
+plot(west_single, type = "members")
+graph.feature(west_comp, indices = getNodesIn(west_comp, type = "indices"), features = 20, default = 5)
+plot(west_comp, type = "members")
+
+cm <- getCommunityConnectedness(west_single, conn = "modularity")
+plot(west_single, type = "commsumm", summary = "modularity")
+cm <- getCommunityConnectedness(west_comp, conn = "modularity")
+plot(west_comp, type = "commsumm", summary = "modularity")
+nf <- graph.feature(west_comp, type = "nodes", indices = which(V(west_comp$igraph)$name == "Valjean"),features = 30, default = 5)
+plot(west_comp, type = "graph", vsize = nf, vshape = "circle", shownodesin = 4)
 
 # Calculate mutual information from link communities
 commun <- west_single$pdens

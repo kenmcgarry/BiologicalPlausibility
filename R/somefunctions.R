@@ -30,10 +30,10 @@ plot_west <- function(anet){
   globalAttrs = list()
   globalAttrs$edge = list(color = "black", lty = "solid", lwd = 1, arrowsize=1)
   globalAttrs$node = list(fillcolor = gray(.95), shape = "ellipse", fixedsize = FALSE)
-  
   # Set attributes of some particular nodes:
-  nodeAttrs = list()
-  nodeAttrs$fillcolor = c('570' = "red", "81" = "red") # highlight hub nodes
+  globalAttrs = list()
+  globalAttrs$node <-list(fillcolor = "lightgreen", 
+                          width=100, shape = "ellipse", fixedsize = FALSE)
   
   # Set edge attributes:
   edi = edge.info(anet) # edge directions and correlations
@@ -45,7 +45,7 @@ plot_west <- function(anet){
   edgeAttrs$lwd = ifelse(abs(edi$weight >= cutoff[2]), 2, 1) # upper 20% quantile
   
   # fig.width=8, fig.height=7
-  plot(anet, attrs = globalAttrs, nodeAttrs = nodeAttrs, edgeAttrs = edgeAttrs, "fdp")
+  plot(anet, attrs = globalAttrs, edgeAttrs = edgeAttrs, "fdp")
   
 }
 
