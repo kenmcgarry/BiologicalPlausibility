@@ -3,7 +3,8 @@ Bioinformatics algorithms need the ability to assess the relevance and biologica
 
 The past 20 years as seen the rapid development and application of numerous computational methods for analyzing bioinformatic data generated from genomic, proteomic and metabolic studies. This has taken place against the backdrop of ever increasing volumes of data with increasing complexity and sophistication. What perhaps has been lacking in the majority of methods is the ability to assess and relevance and biological plausibility of the machine learning discoveries. The term `biological plausibility` relates to a set of criteria defined by Bradford-Hill to assess the association between some biological entity and a disease or some risk factor, the `Bradford-Hill criteria` has seen much use over the years for epidemiological studies. The explanation for the link should be plausible and explicable according to the known facts of biology of the disease in question. 
 
-![Alt Text]()
+![Alt Text](![system](https://user-images.githubusercontent.com/11558110/28996853-90e80f06-79ff-11e7-9837-e18648b93844.jpg)
+)
 
 We use three datasets of microarray expression data to demonstrate our methods. The Arapadosis Thaliana (a plant) experiments by Smith concern the  measurement of 800 genes from 22 samples during diurnal cycle extracted from the leaves and examines the synthesis and functions of enzymes of starch metabolism [Smith2004]. We also use two breast cancer data sets by West and Hedenfalk [West2001,Hedenfalk2001]. The Hedenfalk data examines the different groups of genes (3,226 genes ) expressed by breast cancers with BRCA1 mutations and breast cancers with BRCA2 mutations from 16 samples. The West data explores the hypothesis that breast tumors can be discriminated on the basis of estrogen receptor status and also on the categorized lymph node status, using Affymetrix arrays with 3,883 genes from 49 samples.
 
