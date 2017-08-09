@@ -46,7 +46,7 @@ profiles, 98(20), 1146211467
 > Hedenfalk, I., Duggan, D., Chen, Y., Radmacher, M., Bittner, M., Simon, R., Meltzer, P., Gusterson,
 B., Esteller, M., Raeld, M., Yakhini, Z., Ben-Dor, A., Dougherty, E., Kononen, J., Bubendorf, L.,
 Fehrle, W., Pittaluga, S., Gruvberger, S., Loman, N., Johannsson, O., Olsson, H., Wilfond, B., Sauter,
-G., Kallioniemi, O.-P., Borg, k. and Trent, J. [2001], Gene-expression proles in hereditary breast
+G., Kallioniemi, O.-P., Borg, k. and Trent, J. [2001], Gene-expression profiles in hereditary breast
 cancer, New England Journal of Medicine 344(8), 539-548.
 
 > Smith, S., Fulton, D., Chia, T., Thorneycroft, D., Chapple, A., Dunstan, H., Hylton, C., Zeeman, S.
