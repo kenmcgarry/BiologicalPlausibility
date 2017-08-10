@@ -104,12 +104,15 @@ plot(west_comp, type = "graph", layout = "spencer.circle")
 plot(west_comp, type = "graph",layout = "spencer.circle")
 
 # -----------------------------------------
+# https://cran.r-project.org/web/packages/ontologySimilarity/vignettes/ontologySimilarity-GO-example.html
 # Use GO and KEGG for enrichment
 test <- gene_GO_terms[c("LRBA", "LYST", "NBEA", "NBEAL1", "NBEAL2", "NSMAF", "WDFY3", "WDFY4", "WDR81")]
 
-# some sort of for loop to get all GO terms for each gene in a cluster (community)
+# some sort of for loop to get all GO terms for each gene in each cluster (community)
 GO_cluster <- gene_GO_terms[getNodesIn(west_single, clusterids = 1)]
 go$name[GO_cluster$FGF7]
+
+
 
 
 # just some pretty printing of various graphs -------
@@ -128,6 +131,7 @@ plot(west_comp, type = "commsumm", summary = "modularity")
 nf <- graph.feature(west_comp, type = "nodes", indices = which(V(west_comp$igraph)$name == "Valjean"),features = 30, default = 5)
 plot(west_comp, type = "graph", vsize = nf, vshape = "circle", shownodesin = 4)
 
+#================================================================
 # Calculate mutual information from link communities
 commun <- west_single$pdens
 nbins<- sqrt(NROW(commun))
