@@ -32,5 +32,9 @@ colrs <- c("orange", "pink", "tomato")
 V(fig1net)$color <- colrs[V(fig1net)$media.type]
 plot(fig1net) 
 
+cfg <- cluster_fast_greedy(as.undirected(fig1net))
+plot(cfg, as.undirected(fig1net))
+
+
 
 
