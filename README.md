@@ -5,7 +5,7 @@ The past 20 years as seen the rapid development and application of numerous comp
 
 ![Alt Text](https://user-images.githubusercontent.com/11558110/28996853-90e80f06-79ff-11e7-9837-e18648b93844.jpg)
 
-We use three datasets of microarray expression data to demonstrate our methods. The Arapadosis Thaliana (a plant) experiments by Smith concern the  measurement of 800 genes from 22 samples during diurnal cycle extracted from the leaves and examines the synthesis and functions of enzymes of starch metabolism [Smith2004]. We also use two breast cancer data sets by West and Hedenfalk [West2001,Hedenfalk2001]. The Hedenfalk data examines the different groups of genes (3,226 genes ) expressed by breast cancers with BRCA1 mutations and breast cancers with BRCA2 mutations from 16 samples. The West data explores the hypothesis that breast tumors can be discriminated on the basis of estrogen receptor status and also on the categorized lymph node status, using Affymetrix arrays with 3,883 genes from 49 samples.
+We use three cancer datasets of microarray expression data to demonstrate our methods. The  cell division cycle in a human cancer cell line (HeLa) created by Whitfield, which identified previously known cancer specific genes but also some that were not tumor related [Whitfield2002]. We also use two breast cancer data sets by West and Hedenfalk [West2001,Hedenfalk2001]. The Hedenfalk data examines the different groups of genes (3,226 genes ) expressed by breast cancers with BRCA1 mutations and breast cancers with BRCA2 mutations from 16 samples. The West data explores the hypothesis that breast tumors can be discriminated on the basis of estrogen receptor status and also on the categorized lymph node status, using Affymetrix arrays with 3,883 genes from 49 samples.
 
 In this work we present  a new method called Biologically Plausible Clustering (BPC) for computing a global relevance measure for clustering genes and determining their biological meaning.
 
@@ -49,9 +49,8 @@ Fehrle, W., Pittaluga, S., Gruvberger, S., Loman, N., Johannsson, O., Olsson, H.
 G., Kallioniemi, O.-P., Borg, k. and Trent, J. [2001], Gene-expression profiles in hereditary breast
 cancer, New England Journal of Medicine 344(8), 539-548.
 
-> Smith, S., Fulton, D., Chia, T., Thorneycroft, D., Chapple, A., Dunstan, H., Hylton, C., Zeeman, S.
-and Smith, A. [2009], Diurnal changes in the transcriptom encoding enzymes of starch metabolism
-provide evidence for both transcriptional and posttranscriptional regulation of starch metabolism in
-arabidopsis leaves., Plant Physiol. 136, 2687-2699.
+> Whitfield, M., Sherlock, G., Saldanha, A., Murray, J., Ball, C., Alexander, K., Matese, J., Perou, C.,
+Hurt, M., Brown, P. and Botstein, D. [2002], Identification of genes periodically expressed in the human
+cell cycle and their expression in tumors', Molecular Biology of the Cell 13(6), 1977-2000.
 
-## Project last updated August 11th 2017
+## Project last updated August 30th 2017
